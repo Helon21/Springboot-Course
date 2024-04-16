@@ -1,8 +1,10 @@
 package com.compassuol.estagio.springcourse.config;
 
+import com.compassuol.estagio.springcourse.entities.Category;
 import com.compassuol.estagio.springcourse.entities.Order;
 import com.compassuol.estagio.springcourse.entities.User;
 import com.compassuol.estagio.springcourse.entities.enums.OrderStatus;
+import com.compassuol.estagio.springcourse.repositories.CategoryRepository;
 import com.compassuol.estagio.springcourse.repositories.OrderRepository;
 import com.compassuol.estagio.springcourse.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,18 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     public void run(String... args) throws Exception {
+
+        Category cat1 = new Category(null, "Eletronics");
+        Category cat2 = new Category(null, "Waifus");
+        Category cat3 = new Category(null, "Guns");
+
+        categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+
         User u1 = new User(null, "Helena", "maria@gmail.com", "9999999", "12345");
         User u2 = new User(null, "Emilly", "emilly@gmail.com", "9999999", "12345");
         User u3 = new User(null, "Helen", "helen@gmail.com", "9999999","12345");
