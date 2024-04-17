@@ -14,18 +14,18 @@ public class OrderItemPK implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private Order oder;
+    private Order order;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
     public Order getOder() {
-        return oder;
+        return order;
     }
 
-    public void setOder(Order oder) {
-        this.oder = oder;
+    public void setOder(Order order) {
+        this.order = order;
     }
 
     public Product getProduct() {
@@ -41,11 +41,11 @@ public class OrderItemPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderItemPK that = (OrderItemPK) o;
-        return Objects.equals(oder, that.oder) && Objects.equals(product, that.product);
+        return Objects.equals(order, that.order) && Objects.equals(product, that.product);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(oder, product);
+        return Objects.hash(order, product);
     }
 }
